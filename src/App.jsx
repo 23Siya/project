@@ -22,7 +22,9 @@ function App() {
 
   return (
     <>
-   <div className="min-h-screen flex flex-col bg-gray-100 ">
+   
+   <div className="w-full h-screen flex flex-col bg-gray-100 overflow-hidden">
+        
    <Header setCategory={setCategory} setSelectedGenre={setSelectedGenre} />
 
      {/* Main Content */}
@@ -33,30 +35,41 @@ function App() {
         ) : (
           <>
             {/* Render HomePage if category is "home" */}
-            {category === "home" ? (
-              <HomePage />
-            ) : category === "trending" ? (
-              <TrendingPage />
-            ) : category === "genres" ? (
-              <GenresPage setSelectedGenre={setSelectedGenre} />
-            ) : category === "search" ? (
-              <SearchPage />
-            ) : (
-              <>
-                {/* Dashboard (default view) */}
-                <Dashboard />
 
-                {/*  Display current category and selected genre */}
-                <div className="mt-6">
-                  <p className="text-lg">
-                    Current Category: <span className="font-semibold">{category}</span>
-                  </p>
-                  <p className="text-lg">
-                    Selected Genre: <span className="font-semibold">{selectedGenre || "None"}</span>
-                  </p>
-                </div>
-              </>
-            )}
+            {(()=> {
+              if (category === "home") {
+                return <HomePage />;
+              } else if (category === "trending") {
+                return <TrendingPage />;
+              }
+              else if (category === "genres") {
+                return <GenresPage setSelectedGenre={setSelectedGenre} />;
+              }
+              else if (category === "search") {
+                return <SearchPage />;
+              }
+              else {
+                return (
+                  <>
+                    {/* Dashboard (default view) */}
+                    <Dashboard />
+
+                    {/* Display current category and selected genre */}
+                    <div className="mt-6">
+                      <p className="text-lg">
+                        Current Category: <span className="font-semibold">{category}</span>
+                      </p>
+                      <p className="text-lg">
+                        Selected Genre: <span className="font-semibold">{selectedGenre || "None"}</span>
+                      </p>
+                    </div>
+                  </>
+                );
+              }
+            })()}
+            {/* Render HomePage if category is "home" */}
+           
+            
           </>
         )}
 
