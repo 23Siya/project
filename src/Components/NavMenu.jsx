@@ -10,19 +10,49 @@ function NavMenu({ setCategory, setSelectedGenre }) {
         setSelectedGenre(""); // Reset the selected genre
       };
     return (
-        <nav className="bg-red-600 p-4 rounded-lg shadow-md text-center md:text-left">
-            <ul className="flex space-x-4">
-
-
-            <li>
+        <nav className="bg-blue-600 p-4">
+      <ul className="flex space-x-4 list-none m-0 p-0">
+        {/* Home Button */}
+        <li>
           <button
             onClick={() => handleCategoryChange("home")}
-            className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base" > Home
+            className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base"
+          >
+            Home
           </button>
         </li>
-                
-            </ul>
-        </nav>
+
+        {/* Trending Button */}
+        <li>
+          <button
+            onClick={() => handleCategoryChange("trending")}
+            className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base"
+          >
+            Trending
+          </button>
+        </li>
+
+        {/* Genres Button */}
+        <li>
+          <button
+            onClick={() => handleCategoryChange("genres")}
+            className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base"
+          >
+            Genres
+          </button>
+        </li>
+
+        {/* Search Button */}
+        <li>
+          <button
+            onClick={() => handleCategoryChange("search")}
+            className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base"
+          >
+            Search
+          </button>
+        </li>
+      </ul>
+    </nav>
         
     );
 
