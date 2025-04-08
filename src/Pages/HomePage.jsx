@@ -1,6 +1,15 @@
 import React from "react";
 //Foor testing  purposed no api presesnt
-const Movies = [{id:1,title :'The dark night', gendre :'Sci-fi', rating: 5.2}];
+const Movies = [
+    { id: 1, title: 'Inception', genre: 'Sci-Fi', rating: 8.8 },
+    { id: 2, title: 'The Dark Knight', genre: 'Action', rating: 9.0 },
+    { id: 3, title: 'Interstellar', genre: 'Sci-Fi', rating: 8.6 },
+    { id: 4, title: 'The Matrix', genre: 'Sci-Fi', rating: 8.7 },
+    { id: 5, title: 'Pulp Fiction', genre: 'Crime', rating: 8.9 },
+    { id: 6, title: 'The Hangover', genre: 'Comedy', rating: 7.7 },
+    { id: 7, title: 'Fight Club', genre: 'Drama', rating: 8.8 },
+    { id: 8, title: 'The Shawshank Redemption', genre: 'Drama', rating: 9.3 },
+];
 
 function HomePage() {
     return (
