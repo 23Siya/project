@@ -22,13 +22,13 @@ function NavMenu({ setCategory, setSelectedGenre }) {
           </button>
         </li>
 
-        {/* Trending Button */}
-        <li>
+         {/* Search Button */}
+         <li>
           <button
-            onClick={() => handleCategoryChange("trending")}
+            onClick={() => handleCategoryChange("search")}
             className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base"
           >
-            Trending
+            Search
           </button>
         </li>
 
@@ -42,15 +42,19 @@ function NavMenu({ setCategory, setSelectedGenre }) {
           </button>
         </li>
 
-        {/* Search Button */}
+        {/* Trending Button */}
         <li>
           <button
-            onClick={() => handleCategoryChange("search")}
+            onClick={() => handleCategoryChange("trending")}
             className="text-white hover:text-gray-300 bg-transparent border-none cursor-pointer text-base"
           >
-            Search
+            Trending
           </button>
         </li>
+
+        
+
+       
       </ul>
     </nav>
         
