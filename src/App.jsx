@@ -33,16 +33,13 @@ function App() {
             {/* Render HomePage if category is "home" */}
 
             {(()=> {
-              if (category === "home") {
-                return <HomePage />;
-              } else if (category === "trending") {
+              if (category === "home") {return <HomePage />;} 
+              else if (category === "search") {return <SearchPage />; }
+              else if (category === "trending") {
                 return <TrendingPage />;
               }
               else if (category === "genres") {
                 return <GenresPage setSelectedGenre={setSelectedGenre} />;
-              }
-              else if (category === "search") {
-                return <SearchPage />;
               }
               else {
                 return (
