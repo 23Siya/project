@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 
 // Mock data for search results
-
+const Movies = [
+  { id: 1, title: 'Inception', genre: 'Sci-Fi', rating: 8.8 },
+  { id: 2, title: 'The Dark Knight', genre: 'Action', rating: 9.0 },
+  { id: 3, title: 'Interstellar', genre: 'Sci-Fi', rating: 8.6 },
+  { id: 4, title: 'The Matrix', genre: 'Sci-Fi', rating: 8.7 },
+  { id: 5, title: 'Pulp Fiction', genre: 'Crime', rating: 8.9 },
+];
 
 function SearchPage() {
   // State to manage the search query
@@ -16,7 +22,7 @@ function SearchPage() {
     setSearchQuery(query);
 
     // Filter movies based on the search query
-    const results = mockMovies.filter((movie) =>
+    const results = Movies.filter((movie) =>
       movie.title.toLowerCase().includes(query.toLowerCase())
     );
     setSearchResults(results);
