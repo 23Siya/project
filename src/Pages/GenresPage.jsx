@@ -12,28 +12,7 @@ function GenresPage() {
   const API_KEY = import.meta.env.VITE_OMDb_API_KEY; // Use your API key from the .env file
 
   // Fetch movies when the selected genre changes
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        setLoading(true); // Start loading
-        setError(null); // Clear previous errors
-        const response = await axios.get(
-          `https://www.omdbapi.com/?s=${selectedGenre}&apikey=${API_KEY}` // Query based on selected genre
-        );
-        if (response.data.Response === "True") {
-          setMovies(response.data.Search); // Update movies state with fetched data
-        } else {
-          setError(response.data.Error); // Handle API errors
-        }
-      } catch (err) {
-        setError('Failed to fetch movies. Please try again.'); // Handle network errors
-      } finally {
-        setLoading(false); // Stop loading
-      }
-    };
-
-    fetchMovies();
-  }, [selectedGenre, API_KEY]); // Re-fetch movies when the genre changes
+ 
 
   return (
     <div className="p-6">
