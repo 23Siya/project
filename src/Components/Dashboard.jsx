@@ -3,7 +3,7 @@ import React from 'react';
 function Dashboard(){
 return(
   
-    <div className="p-6">
+    <div className="p-6 min-h-screen bg-gray-100  overflow-auto">
     <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
 
     {/* Grid of Movies */}

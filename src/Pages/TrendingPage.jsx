@@ -9,12 +9,13 @@ import { useEffect } from 'react';
 
 // Mock data for trending movies
 const TrendingMovies = [
-  { id: 1, title: 'Spider-Man: No Way Home', genre: 'Action', rating: 8.4,image:spiderman,
-  },
-  { id: 2, title: 'Dune', genre: 'Sci-Fi', rating: 8.1,image :dune },
-  { id: 3, title: 'No Time to Die', genre: 'Action', rating: 7.6 ,image : nttd },
-  { id: 4, title: 'The Batman', genre: 'Action', rating: 8.2,image :TheBatman },
-  { id: 5, title: 'Shang-Chi', genre: 'Action', rating: 7.9 ,image : ShangChi},
+   
+   
+    { id: 1, title: 'Spider-Man: No Way Home', genre: 'Action', rating: 8.4,image:spiderman,},
+    { id: 2, title: 'Dune', genre: 'Sci-Fi', rating: 8.1,image :dune },
+    { id: 3, title: 'No Time to Die', genre: 'Action', rating: 7.6 ,image : nttd },
+    { id: 4, title: 'The Batman', genre: 'Action', rating: 8.2,image :TheBatman },
+    { id: 5, title: 'Shang-Chi', genre: 'Action', rating: 7.9 ,image : ShangChi},
 ];
 
 function TrendingPage() {
