@@ -1,48 +1,74 @@
-import React from "react";
-import Inception from "../assets/Inception.jpeg";
-import TheDarkKnight from "../assets/TheDarkKnight.jpeg";  
-import Interstellar from "../assets/Interstellar.jpeg";
-import TheMatrix from "../assets/TheMatrix.jpeg";    
-import PulpFiction from "../assets/PulpFiction.jpeg";
-import TheHangover from "../assets/TheHangover.jpeg";
-import FightClub from "../assets/FightClub.jpeg";
-import TheShawshankRedemption from "../assets/TheShawshankRedemption.jpeg";
-
-//Foor testing  purposed no api presesnt
-const Movies = [
-    { id: 1, title: 'Inception', genre: 'Sci-Fi', rating: 8.8,image:Inception },
-    { id: 2, title: 'The Dark Knight', genre: 'Action', rating: 9.0,image:TheDarkKnight },
-    { id: 3, title: 'Interstellar', genre: 'Sci-Fi', rating: 8.6 ,image:Interstellar },
-    { id: 4, title: 'The Matrix', genre: 'Sci-Fi', rating: 8.7 ,image:TheMatrix },
-    { id: 5, title: 'Pulp Fiction', genre: 'Crime', rating: 8.9 ,image:PulpFiction },
-    { id: 6, title: 'The Hangover', genre: 'Comedy', rating: 7.7 ,image:TheHangover },
-    { id: 7, title: 'Fight Club', genre: 'Drama', rating: 8.8 ,image:FightClub },
-    { id: 8, title: 'The Shawshank Redemption', genre: 'Drama', rating: 9.3,image:TheShawshankRedemption },
-];
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function HomePage() {
-    return (
-     <div className="p-6">
-            <h2 className ="text-2xl font-bo;d mb-4">Welcome To My Movie App</h2>
-            <p className="test-gray-600 mb-6"> Discover the best movies and shows. </p>
-            <div>
-        <h3 className="text-xl font-semibold mb-4">Popular Movies</h3>
+  // State to store the fetched movies
+  const [movies, setMovies] = useState([]);
+  const [loading, setLoading] = useState(true); // State to manage loading
+  const [error, setError] = useState(null); // State to manage errors
+
+  const API_KEY = import.meta.env.VITE_OMDb_API_KEY; // Use your API key from the .env file
+
+  // Fetch movies when the component loads
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        setLoading(true); // Start loading
+        const response = await axios.get(
+          `https://www.omdbapi.com/?s=Avengers&apikey=${API_KEY}` // Example query for "Avengers"
+        );
+        if (response.data.Response === "True") {
+          setMovies(response.data.Search); // Update movies state with fetched data
+        } else {
+          setError(response.data.Error); // Handle API errors
+        }
+      } catch (err) {
+        setError('Failed to fetch movies. Please try again.'); // Handle network errors
+      } finally {
+        setLoading(false); // Stop loading
+      }
+    };
+
+    fetchMovies();
+  }, [API_KEY]);
+
+  return (
+    <div className="p-6">
+      {/* Page Title */}
+      <h2 className="text-2xl font-bold mb-4">Featured Movies</h2>
+
+      {/* Loading State */}
+      {loading && <p>Loading movies...</p>}
+
+      {/* Error State */}
+      {error && <p className="text-red-500">{error}</p>}
+
+      {/* Movies Grid */}
+      {!loading && !error && movies.length > 0 && (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {Movies.map((movie) => (
-            <div key={movie.id} className="bg-white p-6 rounded-lg shadow-md">
-                <img
-              src={movie.image}
-              alt={movie.title}
-              className="w-full h-40 object-cover rounded mb-4"
-            />
-              <h4 className="text-lg font-semibold mb-2">{movie.title}</h4>
-              <p className="text-gray-600 mb-2">Genre: {movie.genre}</p>
-              <p className="text-gray-600">Rating: {movie.rating}</p>
+          {movies.map((movie) => (
+            <div key={movie.imdbID} className="bg-white p-6 rounded-lg shadow-md">
+              {/* Movie Poster */}
+              <img
+                src={movie.Poster !== "N/A" ? movie.Poster : "https://via.placeholder.com/150"}
+                alt={movie.Title}
+                className="w-full h-40 object-cover rounded mb-4"
+              />
+              {/* Movie Title */}
+              <h3 className="text-xl font-semibold mb-2">{movie.Title}</h3>
+              {/* Movie Year */}
+              <p className="text-gray-600 mb-2">Year: {movie.Year}</p>
             </div>
           ))}
         </div>
-       </div>
- </div>
-    );
+      )}
+
+      {/* No Movies Found */}
+      {!loading && !error && movies.length === 0 && (
+        <p className="text-gray-600">No movies found.</p>
+      )}
+    </div>
+  );
 }
-    export default HomePage;
+
+export default HomePage;
