@@ -20,12 +20,12 @@ function App() {
 
   return (
    
-   <div className="w-full h-screen flex flex-col bg-gray-100 overflow-hidden">
+   <div className="w-full h-full flex flex-col bg-gray-100 overflow-hidden">
         
    <Header setCategory={setCategory} setSelectedGenre={setSelectedGenre} />
 
      {/* Main Content */}
-     <main className="w-full h-screen flex-grow container mx-auto p-5">
+     <main className="w-full h-full flex-grow container mx-auto p-5">
  {/* Render MovieDetails if a movie is selected */}
  {selectedMovie ? (
           <MovieDetails movie={selectedMovie} onBack={() => setSelectedMovie(null)} />
