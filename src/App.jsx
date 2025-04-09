@@ -17,11 +17,8 @@ function App() {
    const [category, setCategory] = useState("home");
    const [selectedGenre, setSelectedGenre] = useState("");
    const [selectedMovie, setSelectedMovie] = useState(null);
- 
- 
 
   return (
-    
    
    <div className="w-full h-screen flex flex-col bg-gray-100 overflow-hidden">
         
