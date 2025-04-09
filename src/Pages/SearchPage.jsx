@@ -51,6 +51,7 @@ function SearchPage() {
         onChange={handleSearch} // Call handleSearch on input change
         className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
+      <p className="mt-4">You are searching for: {searchQuery}</p>
 
       {/* Search Results Section */}
       <div className="mt-6">
@@ -74,7 +75,7 @@ function SearchPage() {
           </div>
         ) : (
           // Display a message if no results are found
-          <p className="text-gray-600">No results found.</p>
+          <p className="text-red-600">No results found.</p>
         )}
       </div>
     </div>
